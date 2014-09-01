@@ -12,4 +12,19 @@ describe Adventure do
 	    expect(new_adventure.chapters.last).to eq(unexpected_astronaut)
 	  end
 	end
+
+	describe "#fresh_adventure" do
+	  it "add the prologue to a new adventure on it's instantiation" do
+	    new_adventure = Adventure.create(username: 'billy')
+	    expect(new_adventure.chapters.last.prompt).to eq("Welcome to the Adventure")
+	  end
+  end
+
+  	describe "#fresh_adventure" do
+	  it "add the prologue to a new adventure on it's instantiation if it isn't present already" do
+	    new_adventure = Adventure.create(username: 'billy')
+	    new_adventure.fresh_adventure
+	    expect(new_adventure.chapters.length).to eq(1)
+	  end
+  end
 end
