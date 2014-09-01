@@ -20,24 +20,16 @@ class AdventuresController < ApplicationController
     end
   end
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   @tagged = Tag.where(user_id: @user.id)
-  # end
+  def show
+    @adventure = Adventure.find(params[:id])
+    @chapters = @adventure.chapters
+  end
 
-  # def destroy
-  #   @user = User.find(params[:user_id])
-  #   @photos = @user.photos
-  #   @photos.each do |photo|
-  #     @tags = photo.tags
-  #     @tags.each do |tag|
-  #       tag.destroy
-  #     end
-  #     photo.destroy
-  #   end
-  #   @user.destroy
-  #   flash[:notice] = "Shunned."
-  #   redirect_to users_path
-  # end
+  def destroy
+    @adventure = Adventure.find(params[:id])
+    @adventure.destroy
+    flash[:notice] = "Adventure over."
+    redirect_to("/adventures")
+  end
 
 end

@@ -1,1 +1,15 @@
-show.html.erb
+<h3><%= @adventure.username %></h3>
+
+<p><%= @adventure.chapters.last.prompt %></p>
+<br>
+<p><%= @adventure.chapters.last.episode %></p>
+<ul>
+  <% @chapters.last.choices.each do |choice|%>
+    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
+  <% end %>
+</ul>
+<p><a href="/adventures/<%= @adventure.id %>"
+      data-confirm="You sure?"
+      data-method="delete"
+      rel="nofollow">Destroy your Adventure</a></p>
+<p><a href="/adventures">Return to Adventure listing</a></p>
