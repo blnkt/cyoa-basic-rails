@@ -1,8 +1,9 @@
 class ChaptersController < ApplicationController
 
   def index
+    @adventure = Adventure.find(params[:adventure_id])
     @chapters = Chapter.all
-    render('chapters/index.html.erb')
+    redirect_to("/adventures/#{@adventure.id}/chapters/#{@adventure.chapters.last.id}")
   end
 
   def new

@@ -13,7 +13,7 @@ class AdventuresController < ApplicationController
   def create
     @adventure = Adventure.new(params[:adventure])
     if @adventure.save
-      redirect_to("/adventures/#{@adventure.id}")
+      redirect_to("/adventures/#{@adventure.id}/chapters/#{@adventure.chapters.first.id}")
       flash[:notice] = "Welcome to your adventure #{@adventure.username}."
     else
       render('adventures/index.html.erb')
