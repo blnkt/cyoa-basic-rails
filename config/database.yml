@@ -1,0 +1,15 @@
+
+development:
+  adapter: postgresql
+  # encoding: unicode
+  host: localhost
+  database: cyoa2_development
+  username: blnkt
+  password: blnkt
+
+test:
+  adapter: postgresql
+  host: localhost
+  database: cyoa2_test
+  username: blnkt
+  password: blnkt
