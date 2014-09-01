@@ -5,3 +5,12 @@
     <li><a href="/adventures/<%= adventure.id %>"><%= adventure.username %></a></li>
   <% end %>
 </ul>
+
+<h2>Or Start a New Adventure</h2>
+
+
+<form action="/adventures" method="post">
+  <label for="adventure_username">Adventurer</label>
+  <input id="adventure_username" name="adventure[username]" type="text">
+  <button>Start your New Adventure</button>
+</form>
