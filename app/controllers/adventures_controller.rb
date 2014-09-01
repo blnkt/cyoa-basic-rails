@@ -1,7 +1,7 @@
 class AdventuresController < ApplicationController
 
   def index
-    @advntures = Adventure.all
+    @adventures = Adventure.all
     render('adventures/index.html.erb')
   end
 

@@ -1,1 +1,7 @@
 <h1>Choose Your Own Adventure</h1>
+
+<ul>
+  <% @adventures.each do |adventure| %>
+    <li><a href="/adventures/<%= adventure.id %>"><%= adventure.username %></a></li>
+  <% end %>
+</ul>
