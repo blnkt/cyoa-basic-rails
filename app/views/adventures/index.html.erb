@@ -2,7 +2,7 @@
 
 <ul>
   <% @adventures.each do |adventure| %>
-    <li><a href="/adventures/<%= adventure.id %>"><%= adventure.username %></a></li>
+    <li><a href="adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></li>
   <% end %>
 </ul>
 

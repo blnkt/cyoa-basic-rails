@@ -5,7 +5,7 @@
 <p><%= @adventure.chapters.last.episode %></p>
 <ul>
   <% @chapters.last.choices.each do |choice|%>
-    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
+    <li><a href="/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
   <% end %>
 </ul>
 <p><a href="/adventures/<%= @adventure.id %>"
