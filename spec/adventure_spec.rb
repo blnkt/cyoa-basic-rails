@@ -7,7 +7,7 @@ describe Adventure do
 	describe "#add_chapter" do
 	  it "add a chapter to an adventure" do
 	    new_adventure = Adventure.create(username: 'billy')
-	    unexpected_astronaut = Chapter.create({prompt: "Unexpected Astronaut"})
+	    unexpected_astronaut = Chapter.create({prompt: "Unexpected Astronaut", episode: "no one ever expects the unexpected astronaut"})
 	    new_adventure.add_chapter(unexpected_astronaut)
 	    expect(new_adventure.chapters.last).to eq(unexpected_astronaut)
 	  end

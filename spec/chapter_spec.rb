@@ -4,6 +4,8 @@ describe Chapter do
 	it { should have_and_belong_to_many :adventures}
 	it { should have_many :choices }
 	it { should belong_to  :parent_chapter }
+	it { should validate_presence_of :prompt }
+	it { should validate_presence_of :episode }
 
 	
 	describe '#add_choice' do
@@ -18,10 +20,6 @@ describe Chapter do
 	  it 'adds the prologue if it isnt present in the database already' do
 	    first_chap = Chapter.create({prompt: "Welcome to the Adventure", episode: "You awake in a field..."})
 	    expect(Chapter.prologue).to eq(first_chap)
-	  end
-	  it 'makes the prologue if it isnt present in the database already' do
-	    not_the_first = Chapter.create({prompt: 'widget'})
-	    expect(Chapter.prologue.episode).to eq("You awake in a field...")
 	  end
 	end
 end
