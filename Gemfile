@@ -1,3 +1,4 @@
+source 'https://rubygems.org'
 
 gem 'rails'
 gem 'pg'
@@ -5,9 +6,11 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'autoprefixer-rails'
 gem 'turbolinks'
 gem 'execjs'
 gem 'therubyracer'
+gem 'bootstrap-sass'
 
 
 group :development do

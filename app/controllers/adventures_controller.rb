@@ -2,7 +2,7 @@ class AdventuresController < ApplicationController
 
   def index
     @advntures = Adventure.all
-    render('advntures/index.html.erb')
+    render('adventures/index.html.erb')
   end
 
   def new
