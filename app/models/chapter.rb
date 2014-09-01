@@ -3,6 +3,7 @@ class Chapter < ActiveRecord::Base
   has_and_belongs_to_many :adventures
   has_many :choices, class_name: 'Chapter', foreign_key: 'parent_chapter_id'
   belongs_to :parent_chapter, class_name: 'Chapter'
+  validates :prompt, presence: true
 
   scope :prologue, -> {find_or_create_by(prompt: "Welcome to the Adventure") do |chapter| 
     chapter.episode = "You awake in a field..."

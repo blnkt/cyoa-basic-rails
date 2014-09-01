@@ -4,11 +4,6 @@ class Adventure < ActiveRecord::Base
   validates :username, presence: true
 
   def add_chapter chapter
-    unless self.chapters.include?(chapter)
-      self.chapters << chapter
-    else
-      branch = Adventure.create(user_id: self.user_id)
-      self.chapters.slice[0..-2].each { |chapter| branch.chapters << chapter }
-    end
+    self.chapters << chapter unless self.chapters.include?(chapter)
   end
 end

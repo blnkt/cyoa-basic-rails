@@ -14,14 +14,14 @@ describe Chapter do
 	  end
 	end
 
-	# describe '.prologue' do
-	#   it 'makes the prologue if it isnt present in the database already' do
-	#     first_chap = Chapter.create({prompt: "Welcome to the Adventure", episode: "You awake in a field..."})
-	#     expect(Chapter.prologue).to eq(first_chap)
-	#   end
-	#   it 'makes the prologue if it isnt present in the database already' do
-	#     not_the_first = Chapter.create({prompt: 'widget'})
-	#     expect(Chapter.prologue.episode).to eq("You awake in a field...")
-	#   end
-	# end
+	describe '.prologue' do
+	  it 'adds the prologue if it isnt present in the database already' do
+	    first_chap = Chapter.create({prompt: "Welcome to the Adventure", episode: "You awake in a field..."})
+	    expect(Chapter.prologue).to eq(first_chap)
+	  end
+	  it 'makes the prologue if it isnt present in the database already' do
+	    not_the_first = Chapter.create({prompt: 'widget'})
+	    expect(Chapter.prologue.episode).to eq("You awake in a field...")
+	  end
+	end
 end
