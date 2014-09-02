@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   match('adventures/:adventure_id/chapters', {:via => :get, :to => 'chapters#index'})
   match('adventures/:adventure_id/chapters/new', {:via => :get, :to => 'chapters#new'})
-  match('adventures/:adventure_id/chapters', {:via => :post, :to => 'chapters#create'})
+  match('adventures/:adventure_id/chapters/:id', {:via => :post, :to => 'chapters#create'})
   match('adventures/:adventure_id/chapters/:id', {:via => :get, :to => 'chapters#show'})
   match('adventures/:adventure_id/chapters/:id/edit', {via: :get, to: 'chapters#edit'})
-  match('adventures/:adventure_id/chapters/:id', {:via => [:patch, :put], :to => 'chapters#update'})
+  match('adventures/:adventure_id/chapters//:id', {:via => [:patch, :put], :to => 'chapters#update'})
   match('adventures/:adventure_id/chapters/:id', {:via => :delete, :to => 'chapters#destroy'})
 end

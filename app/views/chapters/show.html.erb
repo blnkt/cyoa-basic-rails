@@ -7,5 +7,11 @@
   <% @chapter.choices.each do |choice|%>
     <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
   <% end %>
+	<li><form action="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.id %>" method="post">
+	  <input id="chapter_prompt" name="chapter[:prompt]" type="text" placeholder="Add a choice">
+	  <button>ADD</button>
+	</form></li>
   <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>">TURN BACK </a></li>
 </ul>
+
+
