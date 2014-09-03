@@ -6,13 +6,23 @@ class Chapter < ActiveRecord::Base
   validates :prompt, presence: true
 
   scope :prologue, -> {find_or_create_by({prompt: "Welcome to the Adventure", episode: "You awake in a field..."}) do |chapter|  
-    chapter.add_choice("pick up the keys and walk to the road")
-    chapter.add_choice("Walk the bike out of the field to a nearby road")
-    chapter.add_choice("Put on the hat and head towards the sound of water")
+    a1 = "pick up the keys and walk to the road"
+    a2 = "Walk the bike out of the field to a nearby road"
+    a3 = "Put on the hat and head towards the sound of water"
+    chapter.add_choice(a1)
+    chapter.add_choice(a2)
+    chapter.add_choice(a3)
+    a1a = 
+    a2a = 
+    a3a =
+    Chapter.find_by(prompt: a1).update(episode: a1a)
+    Chapter.find_by(prompt: a2).update(episode: a2a)
+    Chapter.find_by(prompt: a3).update(episode: a3a)
   end}
 
   def add_choice prompt
-    choice = Chapter.create({prompt: prompt, parent_chapter_id: self.id, episode: "Your Princess is in another castle."})
+    choice = Chapter.create({prompt: prompt, parent_chapter_id: self.id})
     self.choices << choice
   end
+
 end 

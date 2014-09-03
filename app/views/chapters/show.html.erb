@@ -1,17 +1,27 @@
-<h3><%= @adventure.username %></h3>
-
-<p><%= @chapter.prompt %></p>
+<h2><%= @adventure.username %>:  <small><%= @chapter.prompt %></small></h2>
 <br>
-<p><%= @chapter.episode %></p>
+<%if @chapter.episode.nil? %>
+	<form id="chapter_episode" action="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.id %>" method="post">
+	  <input name="_method" type="hidden" value="patch">
+	  <textarea  rows="8" cols="54" form="chapter_episode" name="chapter[:episode]" placeholder="this adventure needs your episode"></textarea>
+	  <br>
+    <button>add episode</button>
+  </form>
+
+<% else %>
+  <p><%= @chapter.episode %></p>
+<% end %>
+<br>
+<h2><small>choices</small></h2>
 <ul>
   <% @chapter.choices.each do |choice|%>
     <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
   <% end %>
 	<li><form action="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.id %>" method="post">
-	  <input id="chapter_prompt" name="chapter[:prompt]" type="text" placeholder="Add a choice">
-	  <button>ADD</button>
+	  <input id="chapter_prompt" name="chapter[:prompt]" type="text" placeholder="add choice">
+	  <button>new choice</button>
 	</form></li>
-  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>">TURN BACK </a></li>
+  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>"> turn back </a></li>
 </ul>
 
 

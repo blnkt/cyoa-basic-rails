@@ -7,20 +7,36 @@ class ChaptersController < ApplicationController
   end
 
   def new
-    @chapter = Chapter.new
+    @chapter = Chapter.new(params[:chapter][:prompt])
     @adventure = params[:adventure_id]
-    @adventure.add_chapter
     render('chapters/new.html.erb')
   end
 
   def create
     @adventure = Adventure.find(params[:adventure_id])
     @chapter = Chapter.find(params[:id])
-    if @chapter.add_choice(params[:chapter_prompt])
-      redirect_to("/adventures/@adventure/#{@adventure.id}/chapters/#{@chapter.id}")
+    if @chapter.add_choice(params[:chapter].values.first)
+      @adventure.add_chapter(Chapter.all.last)
+      redirect_to("/adventures/#{@adventure.id}/chapters/#{@chapter.id}")
       flash[:notice] = "A new branch added to #{@adventure.username}'s adventure."
     else
       render('chapters/show.html.erb')
+    end
+  end
+
+  def edit
+    @adventure = Adventure.find(params[:adventure_id])
+    @chapter = Chapter.find(params[:id])
+    render('chapters/edit.html.erb')
+  end
+
+  def update
+    @adventure = Adventure.find(params[:adventure_id])
+    @chapter = Chapter.find(params[:id])
+    if @chapter.update(episode: params[:chapter].values.first)
+      render('chapters/show.html.erb')
+    else
+      render('chapters/edit.html.erb')
     end
   end
 
