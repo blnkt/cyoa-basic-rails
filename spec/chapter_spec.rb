@@ -9,10 +9,9 @@ describe Chapter do
 	describe '#add_choice' do
 	  it "add a choice to a chapter" do
 	    beatles_chapter = Chapter.create({prompt: "glasses", episode: "they came in through the bathroom window"})
-	    rolling_stones_chapter = Chapter.create({prompt: "sex", episode: "sexy drugs"})
-	    beatles_chapter.add_choice(rolling_stones_chapter)
-	    expect(beatles_chapter.choices.first).to eq(rolling_stones_chapter)
-	    expect(rolling_stones_chapter.parent_chapter_id).to eq(beatles_chapter.id)
+	    beatles_chapter.add_choice("sex")
+	    expect(beatles_chapter.choices.first.prompt).to eq("sex")
+	    expect(beatles_chapter.choices.first.parent_chapter_id).to eq(beatles_chapter.id)
 	  end
 	end
 

@@ -16,7 +16,7 @@ class ChaptersController < ApplicationController
   def create
     @adventure = Adventure.find(params[:adventure_id])
     @chapter = Chapter.find(params[:id])
-    if @chapter.add_choice(params[:prompt])
+    if @chapter.add_choice(params[:chapter_prompt])
       redirect_to("/adventures/@adventure/#{@adventure.id}/chapters/#{@chapter.id}")
       flash[:notice] = "A new branch added to #{@adventure.username}'s adventure."
     else
