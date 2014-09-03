@@ -1,15 +1,14 @@
-<h3><%= @adventure.username %></h3>
-
-<p><%= @adventure.chapters.last.prompt %></p>
-<br>
-<p><%= @adventure.chapters.last.episode %></p>
+<h2><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapters.last.id %>"><%= @adventure.username %></a></h2>
+<h3><p><small>chapters in <%= @adventure.username %>'s adventure</small></p></h3>
 <ul>
-  <% @chapters.last.choices.each do |choice|%>
-    <li><a href="/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
+  <% @chapters.each do |chapter|%>
+    <li><a href="adventures/<%= @adventure.id %>/chapters/<%= chapter.id %>"><%= chapter.prompt %></a></li>
   <% end %>
 </ul>
+<br>
+<p><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapters.last.id %>">back to the adventure</a></p>
 <p><a href="/adventures/<%= @adventure.id %>"
       data-confirm="You sure?"
       data-method="delete"
-      rel="nofollow">Destroy your Adventure</a></p>
-<p><a href="/adventures">Return to Adventure listing</a></p>
+      rel="nofollow">destroy your adventure</a></p>
+<p><a href="/adventures">adventurers listing</a></p>

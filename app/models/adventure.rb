@@ -2,6 +2,7 @@
 class Adventure < ActiveRecord::Base
   has_and_belongs_to_many :chapters
   validates :username, presence: true
+  validates :username, uniqueness: true
   after_create :fresh_adventure
 
   def add_chapter chapter

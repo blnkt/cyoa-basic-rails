@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Adventure do
 	it { should have_and_belong_to_many :chapters }
 	it { should validate_presence_of :username }
+	it { should validate_uniqueness_of :username }
 
 	describe "#add_chapter" do
 	  it "add a chapter to an adventure" do
