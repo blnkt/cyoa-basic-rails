@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  match('/', {via: :get, to: 'adventures#index'})
   match('adventures', {via: :get, to: 'adventures#index'})
   match('adventures/new', {via: :get, to: 'adventures#new'})
   match('adventures', {via: :post, to: 'adventures#create'})

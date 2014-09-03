@@ -1,11 +1,15 @@
 <h1>C<small>hoose</small> Y<small>our</small> O<small>wn</small> A<small>dventure</small></h1>
-
-<h2><small>active adventurers</small></h2>
-<ul>
-  <% @adventures.each do |adventure| %>
-    <li><a href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></li>
-  <% end %>
-</ul>
-
-<br>
-<%= render 'form' %>
+<div class="col-md-6">
+  <div class="row">
+		<h2><small>active adventurers</small></h2>
+		<ul>
+		  <% @adventures.each do |adventure| %>
+		    <li><a href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></li>
+		  <% end %>
+		</ul> 
+	</div>
+	<br>
+  <div class="row">
+	  <%= render 'form' %>
+	</div>
+</div>

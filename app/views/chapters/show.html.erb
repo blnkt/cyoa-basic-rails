@@ -1,20 +1,23 @@
 <h2><a href="/adventures/<%= @adventure.id %>"><%= @adventure.username %></a>:  <small><%= @chapter.prompt %></small></h2>
 <br>
-<%if @chapter.episode.nil? %>
-  <%= render 'episode' %>
-
-<% else %>
-  <p><%= @chapter.episode %></p>
-<% end %>
-<br>
-
-<h2><small>choices</small></h2>
-<ul>
-  <% @chapter.choices.each do |choice|%>
-    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
-  <% end %>
-	<li><%= render 'choice' %></li>
-  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>"> turn back </a></li>
-</ul>
-
+<div class="col-md-6">
+	<div class="row"
+		<%if @chapter.episode.nil? %>
+		  <%= render 'episode' %>
+		<% else %>
+		  <p><%= @chapter.episode %></p>
+		<% end %>
+	</div>
+  <br>
+  <div class="row">
+    <h2><small>choices</small></h2>
+    <ul>
+		  <% @chapter.choices.each do |choice|%>
+		    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
+		  <% end %>
+			<li><%= render 'choice' %></li>
+		  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>"> turn back </a></li>
+		</ul>
+  </div>
+</div>
 
