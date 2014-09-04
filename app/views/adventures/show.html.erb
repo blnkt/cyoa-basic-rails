@@ -6,9 +6,11 @@
   <% end %>
 </ul>
 <br>
-<p><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapters.last.id %>">back to the adventure</a></p>
-<p><a href="/adventures/<%= @adventure.id %>"
+<p><a class="btn btn-default" href="/adventures/<%= @adventure.id %>/chapters/<%= @chapters.last.id %>">back to the adventure</a></p>
+<div class="btn-group">
+<p><a class="btn btn-default" href="/adventures/<%= @adventure.id %>"
       data-confirm="You sure?"
       data-method="delete"
       rel="nofollow">destroy your adventure</a></p>
-<p><a href="/adventures">adventurers listing</a></p>
+<p><a class="btn btn-default" href="/adventures">adventurers listing</a></p>
+</div>

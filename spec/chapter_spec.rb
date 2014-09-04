@@ -17,7 +17,7 @@ describe Chapter do
 
 	describe '.prologue' do
 	  it 'adds the prologue if it isnt present in the database already' do
-	    first_chap = Chapter.create({prompt: "Welcome to the Adventure", episode: "You awake in a field..."})
+	    first_chap = Chapter.create({prompt: "Welcome to the Adventure", episode: "You awake in a field.  Your limbs ache.  Your mind is fuzzy; full of star-stuffs.  You here only the birds.  You try to stand to better get your bearings int he hot noonday sun but find your knees and elbows particularly weak.  You return to the ground and resign yourself to acclimating more slowly to your surroundings."})
 	    expect(Chapter.prologue).to eq(first_chap)
 	  end
 	end

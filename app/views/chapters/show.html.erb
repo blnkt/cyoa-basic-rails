@@ -1,20 +1,28 @@
 <h2><a href="/adventures/<%= @adventure.id %>"><%= @adventure.username %></a>:  <small><%= @chapter.prompt %></small></h2>
 <br>
-<%if @chapter.episode.nil? %>
-  <%= render 'episode' %>
+<div class="row">
+	<div class="col-md-6">
+		<%if @chapter.episode.nil? %>
+		  <%= flash[:notice] = "episode can not be blank" %>
+		  <%= render 'episode' %>
 
-<% else %>
-  <p><%= @chapter.episode %></p>
-<% end %>
-<br>
-
-<h2><small>choices</small></h2>
-<ul>
-  <% @chapter.choices.each do |choice|%>
-    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
-  <% end %>
-	<li><%= render 'choice' %></li>
-  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>"> turn back </a></li>
-</ul>
-
+		<% else %>
+		  <p><%= @chapter.episode %></p>
+		<% end %>
+		<br>
+		<h3>c<small>hoices</small></h3>
+		<ul>
+		  <% @chapter.choices.each do |choice|%>
+		    <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= choice.id %>"><%= choice.prompt %></a></li>
+		  <% end %>
+		  <% unless @potential.nil? %>
+		    <%= render 'layouts/errors', :object => @potential %>
+		  <% end %>
+			<li><%= render 'choice' %></li>
+		  <li><a href="/adventures/<%= @adventure.id %>/chapters/<%= @chapter.parent_chapter_id %>"> turn back </a></li>
+		  <br>
+      <a class="btn btn-default" href="/adventures">adventurers listing</a>
+		</ul>
+	</div>
+</div>
 

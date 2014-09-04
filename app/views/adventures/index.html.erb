@@ -1,11 +1,14 @@
 <h1>C<small>hoose</small> Y<small>our</small> O<small>wn</small> A<small>dventure</small></h1>
 
 <h2><small>active adventurers</small></h2>
-<ul>
+<div>
   <% @adventures.each do |adventure| %>
-    <li><a href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></li>
+    <p><a class="btn btn-sm btn-default" href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></p>
   <% end %>
-</ul>
+</div>
 
 <br>
+<% unless @adventure.nil? %>
+  <%= render('layouts/errors', :object => @adventure) %>
+<% end %>
 <%= render 'form' %>

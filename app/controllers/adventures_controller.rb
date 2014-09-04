@@ -2,15 +2,17 @@ class AdventuresController < ApplicationController
 
   def index
     @adventures = Adventure.all
+   # @adventure = Adventure.new
     render('adventures/index.html.erb')
   end
 
   def new
+    @adventures = Adventure.all
     @adventure = Adventure.new
-    render('adventures/new.html.erb')
   end
 
   def create
+    @adventures = Adventure.all
     @adventure = Adventure.new(params[:adventure])
     if @adventure.save
       redirect_to("/adventures/#{@adventure.id}/chapters/#{@adventure.chapters.first.id}")
