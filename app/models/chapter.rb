@@ -56,6 +56,7 @@ class Chapter < ActiveRecord::Base
   def add_choice prompt
     choice = Chapter.create({prompt: prompt, parent_chapter_id: self.id})
     self.choices << choice
+    return choice
   end
 
 end 

@@ -1,15 +1,13 @@
 <h1>C<small>hoose</small> Y<small>our</small> O<small>wn</small> A<small>dventure</small></h1>
-<div class="col-md-6">
-  <div class="row">
-		<h2><small>active adventurers</small></h2>
-		<ul>
-		  <% @adventures.each do |adventure| %>
-		    <li><a href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></li>
-		  <% end %>
-		</ul> 
-	</div>
-	<br>
-  <div class="row">
-	  <%= render 'form' %>
-	</div>
+<h2><small>active adventurers</small></h2>
+<div>
+  <% @adventures.each do |adventure| %>
+    <p><a class="btn btn-sm btn-default" href="/adventures/<%= adventure.id %>/chapters/<%= adventure.chapters.last.id %>"><%= adventure.username %></a></p>
+  <% end %>
 </div>
+
+<br>
+<% unless @adventure.nil? %>
+  <%= render('layouts/errors', :object => @adventure) %>
+<% end %>
+<%= render 'form' %>
